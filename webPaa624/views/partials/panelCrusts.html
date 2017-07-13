@@ -1,0 +1,16 @@
+<form action="/newordercheese" method="post">
+    {{#each tipoMasa}}
+    <div class="panel panel-primary">
+        <div class="panel-heading" style="background-color:#0078ad">{{name}}</div>
+        {{#each tipo}}
+            <div class="panel-body" style="height: 20px;">          
+               <label>{{name}}</label>
+               <input type="radio" name="userName" value="{{name}}" placeholder="..." />
+            </div>
+        {{/each}}
+        <div class="col-md-offset-10">
+            <button class="btn btn-danger" style="background-color: red;" type="submit">Next</button>    
+        </div>
+    </div>
+    {{/each}}    
+</form>
