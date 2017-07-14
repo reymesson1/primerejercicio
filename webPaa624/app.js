@@ -1,8 +1,29 @@
+
 var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
 
+const home = require('./router/home.route.js');//1
+const neworder = require('./router/neworder.route.js');//1 //masa
+const newordercheese = require('./router/newordercheese.route.js');//1 //queso
+const newordersauce = require('./router/newordersauce.route.js');//1 //salsa
+const newordertoppings = require('./router/newordertoppings.route.js');//1 //ingredientes
+const newordercheckout = require('./router/newordercheckout.route.js');//1 //checkout
+const neworderpayment = require('./router/neworderpayment.route.js');//1 //neworderpayment
+
+var expressSession = require('express-session');
+var cookieParser = require('cookie-parser'); 
+
+app.use(cookieParser());
+
+app.use(expressSession({secret:'somesecrettokenhere'}));
+
 app.use(bodyParser());
+
+app.use(express.static(__dirname+'/public'));
+
+var bool = false;
+var login = "";
 
 var handlebars = require('express-handlebars');
 
@@ -14,33 +35,18 @@ app.engine('html', handlebars({
 	extname: '.html'
 }));
 
-var tipoMasa = [
-    { "id":"1","name":"Tradicional", "tipo":[{"name":"4 Pezados"},{"name":"8 Pezados"},{"name":"12 Pezados"}] }, 
-    { "id":"2","name":"Finita","tipo":[{"name":"8 Pezados Mediana"},{"name":"8 Pezados Grande"}]  },
-    { "id":"3","name":"Pan Pizza", "tipo":[{"name":"8 Pezados Mediana"},{"name":"8 Pezados Grande"}] }
-];
+/*Database*/
 
-var tipoQueso = [
+var tipoMasaHelper = require('./tipoMasa.js');
+var tipoQuesoHelper = require('./tipoQueso.js');
+var tipoSalsaHelper = require('./tipoSalsa.js');
+var tipoIngredientesHelper = require('./tipoIngredientes.js');
 
-    {"id":"1", "name":"Mozarella", "tipo":[{"name":"Poco"},{"name":"Normal"},{"name":"Extra"},{"name":"Triple"}]},    
-    {"id":"2", "name":"Ricotta", "tipo":[{"name":"Poco"},{"name":"Normal"},{"name":"Extra"},{"name":"Triple"}]},        
-];
 
-var tipoSalsa = [
-    
-    {"id":"2", "name":"BBQ", "tipo":[{"name":"Poco"},{"name":"Normal"},{"name":"Extra"},{"name":"Triple"}]},
-    {"id":"3", "name":"Marinara", "tipo":[{"name":"Poco"},{"name":"Normal"},{"name":"Extra"},{"name":"Triple"}]}
-];
-
-var tipoIngredientes = [
-    
-    {"id":"2", "name":"Maiz", "tipo":[{"name":"Poco"},{"name":"Normal"},{"name":"Extra"},{"name":"Triple"}]},
-    {"id":"3", "name":"Aceituna", "tipo":[{"name":"Poco"},{"name":"Normal"},{"name":"Extra"},{"name":"Triple"}]},
-    {"id":"3", "name":"Carne molida", "tipo":[{"name":"Poco"},{"name":"Normal"},{"name":"Extra"},{"name":"Triple"}]},
-    {"id":"3", "name":"Vegetales", "tipo":[{"name":"Poco"},{"name":"Normal"},{"name":"Extra"},{"name":"Triple"}]},
-    {"id":"3", "name":"Hongos", "tipo":[{"name":"Poco"},{"name":"Normal"},{"name":"Extra"},{"name":"Triple"}]}
-];
-
+var tipoMasa = tipoMasaHelper();
+var tipoQueso = tipoQuesoHelper();
+var tipoSalsa = tipoSalsaHelper();
+var tipoIngredientes = tipoIngredientesHelper();
 
 var products = [
     { "name":"Materials Cards" },
@@ -49,115 +55,54 @@ var products = [
     { "name":"Material Cards" },
 ];
 
-app.get('/', function(req,res){
-
-	res.render('index',{
-	
-		title:'Title',
-		name: 'Name',
-        products: products  
-	});
-});
-
-app.get('/neworder', function(req,res){
-
-	res.render('neworder',{
-	
-		title:'Title',
-		name: 'Name',
-        tipoMasa: tipoMasa  
-	});
-});
-
-app.get('/newordercheese', function(req,res){
-
-	res.render('newordercheese',{
-	
-		title:'Title',
-		name: 'Name',
-        tipoQueso: tipoQueso  
-	});
-});
-
-app.get('/newordersauce', function(req,res){
-
-	res.render('newordersauce',{
-	
-		title:'Title',
-		name: 'Name',
-        tipoSalsa: tipoSalsa  
-	});
-});
-
-app.get('/newordertoppings', function(req,res){
-
-	res.render('newordertoppings',{
-	
-		title:'Title',
-		name: 'Name',
-        tipoIngredientes: tipoIngredientes
-	});
-});
-
-app.get('/newordercheckout', function(req,res){
-
-	res.render('newordercheckout',{
-	
-		title:'Title',
-		name: 'Name',
-        tipoIngredientes: tipoIngredientes
-	});
-});
-
 var value = [];
 
-app.post('/newordercheese', function(req, res){
-  var userName = req.body.userName;
-  value.push(userName);
-  console.log(value);    
-  res.render('newordercheese',{
-	
-		title:'Title',
-		name: 'Name',
-        tipoQueso: tipoQueso  
-	});  
+home(app, products, bool, login);//2 / router
+neworder(app, tipoMasa);//2 //masa / router
+newordercheese(app, value, tipoQueso);//2 //queso / router
+newordersauce(app, value, tipoSalsa);//2 //salsa / router
+newordertoppings(app, value, tipoIngredientes);//2 //ingredientes / router
+newordercheckout(app, value);//2 //checkout / router
+neworderpayment(app, value);//2 //payment / router
+
+//var historico = ['Masa Tradicional 4 Pezados','Queso Mozarella Triple','Salsa BBQ Triple','Toppings Maiz Triple'];
+
+var historico = [
+    
+    {"id":"1","username":"juanperez","tipo":['Masa Tradicional 4 Pezados','Queso Mozarella Triple','Salsa BBQ Triple','Toppings Maiz Triple']},
+    {"id":"3","username":"danielperez","tipo":['Masa Tradicional 4 Pezados','Queso Mozarella Triple','Salsa BBQ Triple','Toppings Maiz Triple']},    
+
+];
+
+app.get('/reorder', function(req,res){
+
+    res.render('reorder',{
+
+        title:'Title',
+        name: 'Name',
+        historico: historico
+    });
 });
 
-app.post('/newordersauce', function(req, res){
-  var userName = req.body.userName;
-  value.push(userName);
-  console.log(value);    
-  res.render('newordersauce',{
-	
-		title:'Title',
-		name: 'Name',
-        tipoSalsa: tipoSalsa  
-	});  
+app.get('/authentication2', function(req, res){//1
+  
+  if (req.session.userName) {
+    var html = '<br>Your username from your session is: ' + req.session.userName;
+  }
+    res.render('authentication');
+  //res.send(html);  
 });
 
-app.post('/newordertoppings', function(req, res){
-  var userName = req.body.userName;
-  value.push(userName);
-  console.log(value);    
-  res.render('newordertoppings',{
-	
-		title:'Title',
-		name: 'Name',
-        tipoIngredientes: tipoIngredientes  
-	});  
+
+app.post('/authentication2', function(req, res){//3
+  req.session.userName = req.body.userName;  
+    bool = true;
+    login=req.session.userName;
+    console.log(bool);
+    console.log(login);    
+  res.redirect('/newordercheckout');//4
 });
 
-app.post('/newordercheckout', function(req, res){
-  var userName = req.body.userName;
-  value.push(userName);
-  console.log(value);    
-  res.render('newordercheckout',{
-	
-		title:'Title',
-		name: 'Name',
-        value: value
-	});  
-});
 
 app.listen(8082, function(){
 

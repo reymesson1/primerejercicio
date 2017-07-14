@@ -167,9 +167,9 @@
     }
 </style>
 <div class="container">
-<button type="button" class="btn btn-sky text-uppercase btn-lg" style="margin-left: 20%;">Sky button</button>
-<button type="button" class="btn btn-sky text-uppercase btn-lg" style="margin-left: 5%;">Sky button</button>
-<button type="button" class="btn btn-sky text-uppercase btn-lg" style="margin-left: 5%;">Sky button</button>
+<button href="/" type="button" class="btn btn-sky text-uppercase btn-lg" style="margin-left: 30%;">PIZZA</button>
+<a href="/reorder" type="button" class="btn btn-sky text-uppercase btn-lg" style="margin-left: 5%;">RE-ORDER</a>
+<button href="/authentication" type="button" class="btn btn-sky text-uppercase btn-lg" style="margin-left: 5%;">DEALS</button>
 </div>
 <div class="container">
     <nav class="navbar navbar-custom">
@@ -210,11 +210,17 @@
             <a href="/neworder" type="submit" class="btn btn-danger" style="background-color: red !important">New Order</a>
           </form>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Link</a></li>
+              {{#if bool}}
+                    <li><a href="#">{{login}}</a></li>
+                    {{else}}
+                    <li><a href="#">Link</a></li>
+              {{/if}}
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cart <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                
+              <a href="#" type="submit" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cart <span class="caret"></span></a>
+            <form action="/newordercheckoutCart" method="post">
+              <ul class="dropdown-menu">                      
+                        {{> cart}}                    
+            </form>
               </ul>
             </li>
           </ul>

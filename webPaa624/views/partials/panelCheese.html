@@ -5,7 +5,7 @@
         {{#each tipo}}
             <div class="panel-body" style="height: 20px;">          
                <label>{{name}}</label>
-               <input type="radio" name="userName" value="{{name}}" placeholder="..." />
+               <input type="radio" name="userName" value="{{../name}} {{name}}" placeholder="..." />
             </div>
         {{/each}}
         <div class="col-md-offset-10">
@@ -14,3 +14,4 @@
     </div>
     {{/each}}    
 </form>
+
