@@ -1,4 +1,4 @@
-module.exports.multiply = function (data, data2){
+module.exports.toUpperCase = function(data){
 
-	return data * data2;
+	return data.toUpperCase();
 }
