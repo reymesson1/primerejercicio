@@ -5,8 +5,6 @@ var app = express();
 app.set('view engine','html');
 
 
-
-
 var appRoute = require('./router/app.route.js');
 var reorderRoute = require('./router/reorder.js');
 var dealsRoute = require('./router/deals.js');
@@ -56,17 +54,8 @@ loginRoute(app, db);
 registrationRoute(app, db);
 checkoutRoute(app, db);
 logoutRoute(app, db);
-
 esteroideHelpers(app, db);
 microservice(app,db);
-
-
-app.engine('html', handlebars({
-
-	defaultLayout: 'base',
-	helpers: helpers,
-	extname: '.html'
-}));
 
 app.listen('8081', function(){
 
