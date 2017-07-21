@@ -4,7 +4,7 @@ var app = express();
 
 app.set('view engine','html');
 
-var helpers = require('./lib/helpers.js');
+
 
 
 var appRoute = require('./router/app.route.js');
