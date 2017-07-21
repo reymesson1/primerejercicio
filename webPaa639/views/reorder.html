@@ -1,4 +1,4 @@
- <form action="/neworder" method="post">
+<form action="/neworder" method="post">
     {{#if isAvailable}}
     <div class="row">
         <table class="table table-bordered">
@@ -7,6 +7,7 @@
                     <th>Order Id</th>
                     <th>Date</th>            
                     <th>Description</th>
+                    <th>Status</th>
                     <th>User</th>                    
                     <th>Total</th>                    
                 </tr>
@@ -16,7 +17,7 @@
                 <tr>
                     <td>
                     <label class="radio-inline">
-                      <input type="radio" value="{{id}}" name="selected">{{id}}
+                      <input type="radio" value="{{id}}" name="selected" required>{{id}}
                     </label>
                     </td>
                     <td>{{date}}</td>
@@ -36,6 +37,7 @@
                             
                             </table>
                         </td>
+                    <td>{{status}}</td>
                     <td>{{user}}</td>
                     <td>{{total}}.00</td>
                 </tr>
@@ -44,6 +46,9 @@
         </table>
     </div>
     <div class="row">
+        <div class="col-md-2">
+            <button class="btn btn-default" type="submit" name="cancel" value="cancel" >Cancel Order</button>
+        </div>
         <div class="col-md-offset-11">
             <button class="btn btn-primary" type="submit">Check out</button>
         </div>

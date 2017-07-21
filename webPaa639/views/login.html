@@ -1,23 +1,24 @@
 {{#if error}}
 <h1 style="color: red;">{{name}}</h1>
 {{/if}}
+
+<form method="post" action="/login">
 <div class="panel panel-default" style="width: 50%;">
     <div class="panel-body">            
         <div style="width: 40%;margin: 15%;">
-            <form method="post" action="/login">
               <div class="form-group">
                 <label for="email">Email address:</label>
-                <input type="email" name="userName" class="form-control" id="email">
+                <input type="email" name="userName" class="form-control" id="email" required>
               </div>
               <div class="form-group">
                 <label for="pwd">Password:</label>
-                <input type="password" class="form-control" id="pwd">
+                <input type="password" name="password" class="form-control" id="pwd" required>
               </div>
               <div class="checkbox">
                 <label><input type="checkbox"> Remember me</label>
               </div>
               <button type="submit" class="btn btn-default">Submit</button>
-            </form>
         </div>
     </div>
 </div>
+</form>

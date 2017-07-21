@@ -53,7 +53,7 @@
         {{#each orders}}
         <div class="item  col-xs-4 col-lg-4">
             <div class="thumbnail">
-                <img class="group list-group-image" src="http://placehold.it/400x250/000/fff" alt="" />
+                <img class="group list-group-image" src="http://lorempizza.com/380/240" alt="" />
                 <div class="caption">
                     <h4 class="group inner list-group-item-heading">
                         Product title</h4>
@@ -66,11 +66,15 @@
                     </p>
                     <div class="row">
                         <div class="col-xs-12 col-md-6">
+                            <p class="lead" style="font-size:16px;color: red;">
+                                Discount: {{discount}}%
+                            </p>
                             <p class="lead">
-                                ${{total}}.00</p>
+                                Price: ${{calculateDiscount id total discount}}.00
+                            </p>
                         </div>
                         <div class="col-xs-12 col-md-6">
-                            <button class="btn btn-primary" name="selected" value="{{id}}" type="submit">Order Now</button>
+                            <button class="btn btn-danger" name="selected" value="{{id}}" type="submit">Order Now</button>
                         </div>
                     </div>
                 </div>

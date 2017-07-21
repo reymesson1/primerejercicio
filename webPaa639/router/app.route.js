@@ -9,8 +9,10 @@ module.exports = function(app,db){
 
 		                title: 'Title',
 		                name: 'Name',
-                        orders: orders
+                        orders: orders,
+                        login: 'true'
 		        });
+                        
 	});                                   
 
 }

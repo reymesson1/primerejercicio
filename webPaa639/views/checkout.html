@@ -1,6 +1,6 @@
 {{#if error }}
         <h2 style="color:red;">{{name}}</h2>
-{{/if }}
+{{else}}
     <form action="/checkout" method="post">
         <div class="col-md-10">
             <div class="row">
@@ -31,7 +31,11 @@
                              </td>                
                             <td>{{status}}</td>
                             <td>{{user}}</td>                
-                            <td>{{total}}.00</td>                
+                            {{#if discountApply}}
+                                <td>{{calculateDiscount id total discount}}.00</td>                
+                            {{else}}
+                                <td>{{total}}.00</td>
+                            {{/if}}
                          </tr>
                           {{/each}}                                
                       </tbody>
@@ -49,3 +53,4 @@
         </div>
         <div class="col-md-2"></div>
     </form>
+{{/if }}

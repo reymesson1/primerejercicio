@@ -2,7 +2,7 @@ var bodyParser = require('body-parser');
         
 module.exports = function(app, db){
     
-	app.use(bodyParser());
+    app.use(bodyParser());
     
     app.get('/reorder', function(req,res){
                 
@@ -12,9 +12,13 @@ module.exports = function(app, db){
         if(emailField){
             
                         
-            var orders = db.getOrdersFind({"user":emailField.email});
+            //var orders = db.getOrdersFind({"user":emailField.email, "status":"active"});
+            var orders = db.getOrdersFind({"user":emailField.email, $or : [ { "status" : "active" }, {"status":"cancelled"},{"status":"delivered"}]}).sort({id:1});
+            //{ $or: [ {"name": "gary"}, {"name": "rob"}
             
-            var isAvailable = db.getOrdersFind({"user":emailField.email}).length == 0 ? false : true;
+            
+            //var isAvailable = db.getOrdersFind({"user":emailField.email}).length == 0 ? false : true;
+            var isAvailable = db.getOrdersFind({"user":emailField.email, $or : [ { "status" : "active" }, {"status":"cancelled"},{"status":"delivered"} ]   }).length == 0 ? false : true;
                         
             res.render('reorder',{
 

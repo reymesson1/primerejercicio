@@ -1,7 +1,7 @@
 var bodyParser = require('body-parser');
 
 module.exports = function(app, db){
-	app.use(bodyParser());
+    app.use(bodyParser());
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({
     
@@ -9,14 +9,14 @@ module.exports = function(app, db){
     }));
         
     
-	app.get('/registration', function(req,res){
+    app.get('/registration', function(req,res){
 
-		        res.render('registration', {
+                res.render('registration', {
 
-		                error: false,
-		                name: 'Name'
-		        });
-	});
+                        error: false,
+                        name: 'Name'
+                });
+    });
     
     app.post('/registration', function(req,res){
                 
@@ -27,8 +27,7 @@ module.exports = function(app, db){
         var usersTable = db.getUsers();
         var isUsed = false;
         
-        for(var x=0;x<usersTable.length;x++){
-            //console.log(usersTable[x].email);
+        for(var x=0;x<usersTable.length;x++){            
             if(usersTable[x].email==emailField){
                 isUsed=true;
             }
@@ -43,21 +42,12 @@ module.exports = function(app, db){
                 });
             
         }else{
-            
-            if(pwdField==cPwdField){
-                
-                db.addUser({email:emailField,password:pwdField});
-                usersTable = db.getUsers();
 
-                res.redirect('/');
+            db.addUser({email:emailField,password:pwdField});
+            usersTable = db.getUsers();
             
-            }else{
-                    res.render('registration',{
 
-                        error: true,
-                        name: 'Check confirm password and try again'
-                    });
-            }
+            res.redirect('/');
         }
     });
 }

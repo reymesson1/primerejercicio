@@ -1,8 +1,9 @@
+
 module.exports = function(app, db){
 
 	app.get('/deals', function(req,res){
         
-        var orders = db.getOrders();
+        var orders = db.getOrdersFind({ "status" : "offer" });
 
 		        res.render('deals',{
 
@@ -10,6 +11,10 @@ module.exports = function(app, db){
 		                name: 'Name',
                         orders: orders
 		        });
+        
+                
 	});
+    
+    
 
 }
