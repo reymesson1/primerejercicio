@@ -59,8 +59,6 @@ logoutRoute(app, db);
 <<<<<<< HEAD
 esteroideHelpers(app, db);
 microservice(app,db);
-=======
-
 
 
 app.engine('html', handlebars({
@@ -69,7 +67,6 @@ app.engine('html', handlebars({
 	helpers: helpers,
 	extname: '.html'
 }));
->>>>>>> a5207f93cf70cb9c59bdb3677b2708d7db69911c
 
 app.listen('8081', function(){
 
