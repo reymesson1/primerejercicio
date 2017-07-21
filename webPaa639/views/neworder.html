@@ -1,0 +1,113 @@
+{{#if error}}
+    <h2 style="color:red;">{{name}}</h2>
+{{/if}}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6"></div>
+        <div class="col-md-offset-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    With normal text
+                </div>
+                <div class="panel-body">
+                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h1 class="panel-title">With '<a href="#application.urlroot#/html/tags/html_h1_tag.cfm">h1</a>' Element &amp; 'panel-title' Class</h1>
+                </div>
+                <div class="panel-body">
+                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<form method="post" action="/neworder">
+    <div class="row">
+
+
+        <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h1 class="panel-title">With '<a href="#application.urlroot#/html/tags/html_h1_tag.cfm">h1</a>' Element &amp; 'panel-title' Class</h1>
+                </div>
+                <div class="panel-body">
+
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                Select the crust of your favorite pizza:                            
+                                  <br>
+                                    <label class="radio-inline">
+                                      <input type="radio" value="Tradicional" name="crusts">Tradicional
+                                    </label>
+                                    <label class="radio-inline">
+                                      <input type="radio" value="Slim" name="crusts">Slim
+                                    </label>
+                                    <label class="radio-inline">
+                                      <input type="radio" value="Doble" name="crusts">Doble
+                                    </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                Select the cheese to put on your pizza:                            
+                                  <br>
+                                    <label class="radio-inline">
+                                      <input type="radio" value="Mozarella" name="cheese">Mozarella
+                                    </label>
+                                    <label class="radio-inline">
+                                      <input type="radio" value="Ricotta" name="cheese">Ricotta
+                                    </label>                                    
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                Select the sauce to put on your pizza:                            
+                                  <br>
+                                    <label class="radio-inline">
+                                      <input type="radio" value="BBQ" name="sauce">BBQ
+                                    </label>
+                                    <label class="radio-inline">
+                                      <input type="radio" value="Marinara" name="sauce">Marinara
+                                    </label>                                    
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                Select the topping to put on your pizza:                            
+                                  <br>
+                                    <label class="radio-inline">
+                                      <input type="radio" value="Meat" name="toppings">Meat
+                                    </label>
+                                    <label class="radio-inline">
+                                      <input type="radio" value="Vegetable" name="toppings">Vegetable
+                                    </label>
+                                    <label class="radio-inline">
+                                      <input type="radio" value="onion" name="toppings">Onion
+                                    </label>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>   
+    </div>
+    <div class="row col-md-offset-10">
+        <a href="/" class="btn btn-default">Cancel</a>
+        <button type="submit" class="btn btn-primary">Confirm</button>
+    </div>
+</form>

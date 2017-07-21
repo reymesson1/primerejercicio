@@ -1,0 +1,54 @@
+ <form action="/neworder" method="post">
+    {{#if isAvailable}}
+    <div class="row">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Order Id</th>
+                    <th>Date</th>            
+                    <th>Description</th>
+                    <th>User</th>                    
+                    <th>Total</th>                    
+                </tr>
+            </thead>
+            <tbody>
+                    {{#each orders}}                
+                <tr>
+                    <td>
+                    <label class="radio-inline">
+                      <input type="radio" value="{{id}}" name="selected">{{id}}
+                    </label>
+                    </td>
+                    <td>{{date}}</td>
+                        <td>
+                            <table class="table table-bordered">
+                                <tbody>
+                                    {{#each pizza}}
+                            <tr>
+                                <td>
+                                            {{#each items}}
+                                                {{name}}
+                                            {{/each}}
+                                </td>
+                            </tr>     
+                                    {{/each}}                                
+                                </tbody>
+                            
+                            </table>
+                        </td>
+                    <td>{{user}}</td>
+                    <td>{{total}}.00</td>
+                </tr>
+                    {{/each}}                
+            </tbody>
+        </table>
+    </div>
+    <div class="row">
+        <div class="col-md-offset-11">
+            <button class="btn btn-primary" type="submit">Check out</button>
+        </div>
+    </div>
+    {{else}}
+        <h1 style="color: gray;">There're not orders available yet.</h1>
+    {{/if}}
+</form>

@@ -1,0 +1,51 @@
+{{#if error }}
+        <h2 style="color:red;">{{name}}</h2>
+{{/if }}
+    <form action="/checkout" method="post">
+        <div class="col-md-10">
+            <div class="row">
+                <div class="panel panel-default">
+                   <div class="panel-heading">
+                      <h1 class="panel-title">Checkout</h1>
+                   </div>
+                   <table class="table">
+                      <thead>
+                         <tr>
+                            <th>No.</th>
+                            <th>Date</th>
+                            <th>Description</th>
+                            <th>Status</th>
+                            <th>User</th>
+                            <th>Total</th>
+                         </tr>
+                      </thead>
+                      <tbody>   
+                          {{#each pizza}}
+                         <tr>
+                            <td>{{id}}</td>
+                            <td>{{date}}</td>
+                            <td>
+                            {{#each items}}
+                                {{name}}
+                            {{/each}}
+                             </td>                
+                            <td>{{status}}</td>
+                            <td>{{user}}</td>                
+                            <td>{{total}}.00</td>                
+                         </tr>
+                          {{/each}}                                
+                      </tbody>
+                   </table>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+                    <!--<a href="/neworder" class="btn btn-default">Continuing Order</a>-->
+                </div>
+                <div class="col-md-offset-10">
+                    <button type="submit" class="btn btn-primary">Confirm</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2"></div>
+    </form>

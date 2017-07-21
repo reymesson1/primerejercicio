@@ -1,0 +1,31 @@
+{{#if error}}
+<h1 style="color: red;">{{name}}</h1>
+{{/if}}
+<div class="panel panel-default" style="width: 50%;">
+    <div class="panel-body">            
+        <div style="width: 40%;margin: 15%;">
+            <form method="post" action="/registration">
+              <div class="form-group">
+                <label for="email">Email address:</label>
+                <input type="email" name="email" class="form-control" id="email">
+              </div>
+              <div class="form-group">
+                <label for="pwd">Password:</label>
+                <input type="password" name="password" class="form-control" id="pwd">
+              </div>                  
+              <div class="form-group">
+                <label for="pwd">Confirm password:</label>
+                <input type="password" name="confirmPassword" class="form-control" id="pwd">
+              </div> 
+              <div class="row" style="margin: 10%;">
+                <div class="col-md-6">
+                    <button type="submit" class="btn btn-default">Save</button>
+                </div>
+                <div class="col-md-6">
+                    <a href="/" class="btn btn-default ">Cancel</a>                    
+                </div>
+              </div>
+            </form>
+        </div>
+    </div>
+</div>
