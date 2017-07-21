@@ -56,7 +56,7 @@ loginRoute(app, db);
 registrationRoute(app, db);
 checkoutRoute(app, db);
 logoutRoute(app, db);
-<<<<<<< HEAD
+
 esteroideHelpers(app, db);
 microservice(app,db);
 
