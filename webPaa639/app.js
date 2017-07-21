@@ -5,6 +5,8 @@ var app = express();
 app.set('view engine','html');
 var handlebars = require('express-handlebars');
 
+var helpers = require('./lib/helpers.js');
+
 
 var appRoute = require('./router/app.route.js');
 var reorderRoute = require('./router/reorder.js');
@@ -46,6 +48,7 @@ logoutRoute(app, db);
 app.engine('html', handlebars({
 
 	defaultLayout: 'base',
+	helpers: helpers,
 	extname: '.html'
 }));
 
