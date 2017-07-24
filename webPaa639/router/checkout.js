@@ -8,7 +8,7 @@ module.exports = function(app, db){
     
     app.post('/checkout', function(req,res){
         
-        res.redirect('');
+        res.redirect('/rey');
         
     });
     
