@@ -16,6 +16,7 @@
                             <th>Description</th>
                             <th>Status</th>
                             <th>User</th>
+                            <th>Discount</th>
                             <th>Total</th>
                          </tr>
                       </thead>
@@ -30,7 +31,8 @@
                             {{/each}}
                              </td>                
                             <td>{{status}}</td>
-                            <td>{{user}}</td>                
+                            <td>{{user}}</td>
+                            <td>{{discount}}</td>
                             {{#if discountApply}}
                                 <td>{{calculateDiscount id total discount}}.00</td>                
                             {{else}}
