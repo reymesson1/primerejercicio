@@ -47,7 +47,7 @@ module.exports = function(app,db){
             usersTable = db.getUsers();
             
 
-            res.redirect('/');
+            res.redirect('/rey');
         }
             
 
