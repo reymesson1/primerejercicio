@@ -6,22 +6,11 @@ module.exports = function(app, db){
         defaultLayout: 'base',
         helpers: {
 
-            calculateDiscount : function(id, price,discount){
-                
-                var or = db.getOrdersFind({status:"offer"});
-                
-                var calculated;
-                
-                
-                if(discount==0){
-                    
-                    calculated = price - (price * 1 / 100);
-                }else{
-                
-                    calculated = price - (price * discount / 100);
-                }
+            calculateDiscount : function(price,discount){
+                                                
+                var calculated = price - (price * discount / 100);            
                                 
-                return calculated;
+                return Math.round(calculated);
             },
             navBarLogin : function(data){
                 
