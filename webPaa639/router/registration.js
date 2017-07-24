@@ -1,6 +1,6 @@
 var bodyParser = require('body-parser');
 
-module.exports = function(app, db){
+module.exports = function(app,db, dba){
     app.use(bodyParser());
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({
@@ -43,11 +43,20 @@ module.exports = function(app, db){
             
         }else{
 
-            db.addUser({email:emailField,password:pwdField});
-            usersTable = db.getUsers();
+           // db.addUser({email:emailField,password:pwdField});
+           // usersTable = db.getUsers();
+
+	var user = {
+
+		email: emailField,
+		password: pwdField
+	};
+
+	dba.InsertItem("users",user, function(result){
+		res.redirect('');
+	});
             
 
-            res.redirect('/');
         }
     });
 }

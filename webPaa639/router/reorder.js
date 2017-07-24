@@ -28,7 +28,7 @@ module.exports = function(app, db){
                 isAvailable: isAvailable
             });
         }else{
-            res.redirect('/login');
+            res.redirect('login');
         }
     });
     

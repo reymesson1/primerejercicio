@@ -1,0 +1,6 @@
+{
+  "name": "webass",
+  "dependencies": {
+    "mongodb": "^2.2.30"
+  }
+}

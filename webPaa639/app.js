@@ -18,6 +18,7 @@ var microservice = require('./lib/microservice');
 
 var db = require('./lib/db-helper.js')();
 
+var dba = require('./lib/dba-helper.js');
 
 var pizza = [{"id":1,"user":"reymesson@gmail.com","items":[{ "id":"1","name":"Tradicional","price":200,"discount":"15" },{ "id":"2","name":"Mozarella","price":200,"discount":"10" },{ "id":"3","name":"BBQ","price":100,"discount":"5" },{ "id":"4","name":"Maiz","price":200,"discount":"2" }],"date":"21/07/2017 11:27:04","status":"offer","total":600}];
                 
@@ -51,13 +52,13 @@ reorderRoute(app, db);
 dealsRoute(app, db);
 neworderRoute(app, db);
 loginRoute(app, db);
-registrationRoute(app, db);
+registrationRoute(app,db, dba);
 checkoutRoute(app, db);
 logoutRoute(app, db);
 esteroideHelpers(app, db);
 microservice(app,db);
 
-app.listen('8081', function(){
+app.listen('6719', function(){
 
 	console.log('Listening from 8081...');
 });

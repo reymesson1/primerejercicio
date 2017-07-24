@@ -28,9 +28,9 @@ module.exports = function(app, db){
                 var cookies = db.getCookies();
                 
                 if(cookies.length==0){                    
-                    return '<li><a href="/login">Sign in</a></li><li><a href="/registration">Sign up</a></li>';
+                    return '<li><a href="login">Sign in</a></li><li><a href="registration">Sign up</a></li>';
                 }else{
-                    return '<li><a href="/logout">Sign out</a></li>';
+                    return '<li><a href="logout">Sign out</a></li>';
                 }
             }
         },
