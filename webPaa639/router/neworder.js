@@ -120,7 +120,7 @@ module.exports = function(app, db){
                                 name: 'Unavailable to cancelled the orders is on the road...'
                            });
                     }else{
-                           res.redirect('');
+                           res.redirect('/rey');
                     }
                     
                 
