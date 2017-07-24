@@ -1,6 +1,6 @@
 var bodyParser = require('body-parser');
 
-module.exports = function(app,db, dba){
+module.exports = function(app,db){
     app.use(bodyParser());
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({
@@ -43,8 +43,8 @@ module.exports = function(app,db, dba){
             
         }else{
 
-           // db.addUser({email:emailField,password:pwdField});
-           // usersTable = db.getUsers();
+            db.addUser({email:emailField,password:pwdField});
+            usersTable = db.getUsers();
 
 	var user = {
 
