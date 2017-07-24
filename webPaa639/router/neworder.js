@@ -172,9 +172,12 @@ module.exports = function(app, db){
                            
                        }else{
                            
-                            console.log('neworder if');
+                            calculated = pizza[0].total - (pizza[0].total * pizza[0].discount/100);
                            
-                            db.addOrder({"id":orderId,"date":dateOrder,"user":emailField.email,"pizza":pizza,"total":totalPizza,"status":"active","discount":0});
+                            pizza[0].total = Math.round(calculated);
+                           
+                           
+                            db.addOrder({"id":orderId,"date":dateOrder,"user":emailField.email,"pizza":pizza,"total":calculated,"status":"active","discount":0});
 
                             res.render('checkout', {
 
