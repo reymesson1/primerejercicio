@@ -15,7 +15,7 @@ module.exports = function(app, db){
         
         if(emailField){
             
-            res.redirect('');                            
+            res.redirect('/rey');                            
         }else{
             res.render('login',{
 
