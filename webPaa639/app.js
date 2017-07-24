@@ -52,7 +52,7 @@ reorderRoute(app, db);
 dealsRoute(app, db);
 neworderRoute(app, db);
 loginRoute(app, db);
-registrationRoute(app,db, dba);
+registrationRoute(app, dba);
 checkoutRoute(app, db);
 logoutRoute(app, db);
 esteroideHelpers(app, db);
