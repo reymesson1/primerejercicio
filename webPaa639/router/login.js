@@ -48,7 +48,7 @@ module.exports = function(app, db){
         }
         
         if(isUsed&&isPass){
-            console.log('login isused');
+            
             db.addCookie({email:emailField});
             res.redirect('/rey');
         }else{
