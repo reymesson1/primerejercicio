@@ -32,48 +32,57 @@ module.exports = function(app, db){
         
 
             if(req.body.crusts&&req.body.cheese&&req.body.sauce&&req.body.toppings){//start new order
-                var crusts = req.body.crusts;
-                var cheese = req.body.cheese;
-                var sauce = req.body.sauce;
-                var toppings = req.body.toppings;
+                var pizzaObj = new Object();
+                pizzaObj.crusts= req.body.crusts;
+                pizzaObj.cheese = req.body.cheese;
+                pizzaObj.sauce = req.body.sauce;
+                pizzaObj.toppings = req.body.toppings;
+                pizzaObj.toppings2 = req.body.toppings2;
+                pizzaObj.size = req.body.size;
+                pizzaObj.extra = req.body.extra;
+                pizzaObj.totalPizza = 10;
                 
-                
-                var totalPizza = 10;
-                if(crusts){                    
-                    totalPizza+=200;                                    
+                //var totalPizza = 10;
+                if(pizzaObj.crusts){                    
+                    pizzaObj.totalPizza+=200;                                    
                 }
-                if(cheese){                    
-                    totalPizza+=200;
+                if(pizzaObj.cheese){                    
+                    pizzaObj.totalPizza+=200;
                 }
-                if(sauce){                
-                    if(sauce=='BBQ'){
-                        totalPizza+=100;
+                if(pizzaObj.sauce){                
+                    if(pizzaObj.sauce=='BBQ'){
+                        pizzaObj.totalPizza+=100;
                     }else{                    
-                        totalPizza+=50;
+                        pizzaObj.totalPizza+=50;
                     }
                 }
-                if(toppings){                    
-                    if(toppings=='meat'){                        
-                        totalPizza+=200;
-                    }else if(toppings=='vegetable'){                        
-                        totalPizza+=300;
-                    }else if(toppings=='onion'){                        
-                        totalPizza+=150;                
+                if(pizzaObj.toppings){                    
+                    if(pizzaObj.toppings=='meat'){                        
+                        pizzaObj.totalPizza+=200;
+                    }else if(pizzaObj.toppings=='vegetable'){                        
+                        pizzaObj.totalPizza+=300;
+                    }else if(pizzaObj.toppings=='onion'){                        
+                        pizzaObj.totalPizza+=150;                
                     }else{                    
-                        totalPizza+=100;
+                        pizzaObj.totalPizza+=100;
                     }
+                }
+                
+                if(pizzaObj.extra){                    
+                    pizzaObj.totalPizza+=300;
                 }
                                 
                                 
                 orderId++;
                 
+
                 
                 
-                var pizza = [{"id":orderId,"user":emailField.email,"items":[{ "id":"1","name":crusts,"price":200 },{ "id":"2","name":cheese,"price":200 },{ "id":"3","name":sauce,"price":100 },{ "id":"4","name":toppings,"price":200 }],"date":dateOrder,"status":"active","total":totalPizza, "discount":0}];
+                var pizza = [{"id":orderId,"user":emailField.email,"items":[{ "id":"1","name":pizzaObj.crusts,"price":200 },{ "id":"2","name":pizzaObj.cheese,"price":200 },{ "id":"3","name":pizzaObj.sauce,"price":100 },{ "id":"4","name":pizzaObj.toppings,"price":200 },{ "id":"5","name":pizzaObj.toppings2,"price":200 },{"id":"6","name":pizzaObj.size,"price":100},{"id":7,"name":pizzaObj.extra,"extra":300}],"date":dateOrder,"status":"active","total":pizzaObj.totalPizza, "discount":0}];                
                 
                 var grandTotal = 10;
                 
-                db.addOrder({"id":orderId,"date":dateOrder,"user":emailField.email,"pizza":pizza,"total":totalPizza,"status":"active", "discount":0});
+                db.addOrder({"id":orderId,"date":dateOrder,"user":emailField.email,"pizza":pizza,"total":pizzaObj.totalPizza,"status":"active", "discount":0});
 
                 
 
