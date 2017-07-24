@@ -2,38 +2,54 @@
     <h2 style="color:red;">{{name}}</h2>
 {{/if}}
 
+<form method="post" action="neworder">
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-6"><img src="http://lorempizza.com/380/240"></div>
+        <div class="col-md-6"></div>
         <div class="col-md-offset-6">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    With normal text
+                    Pizza Size:
                 </div>
                 <div class="panel-body">
-                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.
+                    <label class="radio-inline">
+                          <input type="radio" value="Medium" name="size" required>Medium
+                    </label>
+                    <label class="radio-inline">
+                          <input type="radio" value="Big" name="size" required>Big
+                    </label>
+                    <label class="radio-inline">
+                          <input type="radio" value="Small" name="size" required>Small
+                    </label>                    
                 </div>
             </div>
 
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h1 class="panel-title">With '<a href="#application.urlroot#/html/tags/html_h1_tag.cfm">h1</a>' Element &amp; 'panel-title' Class</h1>
+                    <h1 class="panel-title">Add extra toppings</h1>
                 </div>
                 <div class="panel-body">
-                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.
+                    <label class="radio-inline">
+                          <input type="radio" value="Pepperoni" name="extra" >Pepperoni
+                    </label>
+                    <label class="radio-inline">
+                          <input type="radio" value="Salami" name="extra" >Salami
+                    </label>
+                    <label class="radio-inline">
+                          <input type="radio" value="Chicken" name="extra" >Chicken
+                    </label>
                 </div>
             </div>
         </div>
     </div>
 
 </div>
-<form method="post" action="neworder">
     <div class="row">
 
 
         <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h1 class="panel-title">With '<a href="#application.urlroot#/html/tags/html_h1_tag.cfm">h1</a>' Element &amp; 'panel-title' Class</h1>
+                    <h1 class="panel-title">Ingredients</h1>
                 </div>
                 <div class="panel-body">
 
@@ -97,7 +113,7 @@
                                       <input type="radio" value="Vegetable" name="toppings">Vegetable
                                     </label>
                                     <label class="radio-inline">
-                                      <input type="radio" value="onion" name="toppings">Onion
+                                      <input type="radio" value="Onion" name="toppings2" required>Onion
                                     </label>
                             </div>
                         </div>
@@ -107,7 +123,7 @@
             </div>   
     </div>
     <div class="row col-md-offset-10">
-        <a href="/rey" class="btn btn-default">Cancel</a>
+        <a href="/" class="btn btn-default">Cancel</a>
         <button type="submit" class="btn btn-primary">Confirm</button>
     </div>
 </form>
