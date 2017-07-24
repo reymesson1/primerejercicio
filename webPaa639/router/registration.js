@@ -45,16 +45,10 @@ module.exports = function(app,db){
 
             db.addUser({email:emailField,password:pwdField});
             usersTable = db.getUsers();
+            
 
-	var user = {
-
-		email: emailField,
-		password: pwdField
-	};
-
-	dba.InsertItem("users",user, function(result){
-		res.redirect('/rey');
-	});
+            res.redirect('/');
+        }
             
 
         }
