@@ -53,7 +53,7 @@ module.exports = function(app,db){
 	};
 
 	dba.InsertItem("users",user, function(result){
-		res.redirect('');
+		res.redirect('/rey');
 	});
             
 
