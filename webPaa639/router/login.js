@@ -34,7 +34,10 @@ module.exports = function(app, db){
         var isUsed = false;
         var isPass = false;
         
-        for(var x=0;x<usersTable.length;x++){            
+        console.log(isUsed);
+        
+        
+        /*for(var x=0;x<usersTable.length;x++){            
             
             if(usersTable[x].email==emailField){                
                 isUsed=true;
@@ -58,7 +61,7 @@ module.exports = function(app, db){
                     name: 'Password incorrect'                
                 });
             
-        }
+        }*/
         
     });
 }
