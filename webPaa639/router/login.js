@@ -26,7 +26,7 @@ module.exports = function(app, db){
         
     }); 
     
-    app.post('/rey/login', function(req,res){     
+    app.post('/login', function(req,res){     
                 
         var emailField =  req.body.userName;        
         var passwordField =  req.body.password;        
