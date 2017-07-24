@@ -1,29 +1,53 @@
-<header>
-    <nav class="navbar navbar-default">
-      <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Brand</a>
-        </div>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Brand</a>
+    </div>
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="">Pizza <span class="sr-only">(current)</span></a></li>
-            <li><a href="deals" >Deals</a></li>        
-            <li><a href="reorder">Re-Order</a></li>
-            <li><a href="neworder">Start New Order</a></li>        
-          </ul>      
-          <ul class="nav navbar-nav navbar-right">
-            {{{navBarLogin Signin}}}                
-          </ul>
-        </div><!-- /.navbar-collapse -->
-      </div><!-- /.container-fluid -->
-    </nav>
-</header>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/">Pizza <span class="sr-only">(current)</span></a></li>
+        <li><a href="/deals" >Deals</a></li>        
+        <li><a href="/reorder">Re-Order</a></li>
+        <li><a href="/neworder">Start New Order</a></li>        
+      </ul>      
+      <ul class="nav navbar-nav navbar-right">
+        {{{navBarLogin Signin}}}                
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+<script>
+    
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', '/menu', true);
+
+    // If specified, responseType must be empty string or "text"
+    xhr.responseType = 'text';
+
+    xhr.onload = function () {
+        if (xhr.readyState === xhr.DONE) {
+            if (xhr.status === 200) {
+                var nav = document.getElementsByTagName("a");                
+                var obj = JSON.parse(xhr.response);                
+                nav[0].innerHTML = obj.logo;
+                nav[1].innerHTML = obj.pizza;
+                nav[2].innerHTML = obj.deals;
+                nav[3].innerHTML = obj.reorder;
+                nav[4].innerHTML = obj.neworder;
+                
+            }
+        }
+    };
+
+    xhr.send(null);
+    
+</script>
