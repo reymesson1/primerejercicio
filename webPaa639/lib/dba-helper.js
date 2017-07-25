@@ -68,13 +68,23 @@ module.exports = function(){
           });      
    }
     
-    
+   function setOrders(order){
+       
+       var MongoClient = require('mongodb').MongoClient;
+          var url = "mongodb://localhost:27017/rey";
+          MongoClient.connect(url, function(err, db) {
+            if (err) throw err;
+              db.collection("orders").update(order);
+              db.close();
+              console.log('Updated');
+          });
+   }
    
-  return {
+   return {
         getUsers: getUsers,
         addUser: addUser,
         getOrders: getOrders,
         addOrder: addOrder,
         getOrdersFind: getOrdersFind
-  }  
+   }  
 }
