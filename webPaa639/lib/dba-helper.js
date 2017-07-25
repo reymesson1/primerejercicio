@@ -1,3 +1,5 @@
+var bodyParser = require('body-parser');
+
 module.exports = function(){ 
     
     function addUser(user){  
@@ -68,7 +70,7 @@ module.exports = function(){
           });      
    }
     
-   function setOrders(order, orderChange, callback){
+   function setOrders(idOrder, callback){
        
        var MongoClient = require('mongodb').MongoClient;
         var url = "mongodb://127.0.0.1:27017/rey";
@@ -77,7 +79,7 @@ module.exports = function(){
           if (err) throw err;
           
           //db.collection("orders").update(order, orderChange, function(err, res) {              
-          db.collection("orders").updateOne({"id":28}, {"$set":{"status":"cancelled"}}, function(err, res) {              
+          db.collection("orders").updateOne({"id":idOrder}, {"$set":{"status":"cancelled"}}, function(err, res) {              
             if (err) throw err;              
              console.log(order + ' ' + orderChange)
             callback(res);
