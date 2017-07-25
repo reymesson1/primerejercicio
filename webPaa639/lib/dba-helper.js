@@ -54,7 +54,7 @@ module.exports = function(){
           });      
    }
     
-   function getOrdersFind(order){
+   function getOrdersFind(order, callback){
        
        var MongoClient = require('mongodb').MongoClient;
           var url = "mongodb://localhost:27017/rey";
