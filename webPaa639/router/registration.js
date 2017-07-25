@@ -31,7 +31,7 @@ module.exports = function(app,db, dba){
         
         dba.getUsers(email,function(data){
             
-            //console.log(data.length);
+            console.log(data.length);
             if(data.length>0){
                 isUsed=true;
             }
