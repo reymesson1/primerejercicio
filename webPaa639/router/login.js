@@ -36,16 +36,19 @@ module.exports = function(app, db, dba){
         dba.getUsers(email,function(data){
               
             console.log('login ' + data.length);
-            /*if(data[0].email==emailField&&data[0].password==passwordField){
-                db.addCookie({email:emailField});
-                res.redirect('/rey');                
-            }else{
-                res.render('registration',{
-                    error: true,
-                    title: 'Title',
-                    name: 'Password incorrect'                                
-                });
-            }*/
+            
+            if(data.length==1){
+                if(data[0].email==emailField&&data[0].password==passwordField){
+                    db.addCookie({email:emailField});
+                    res.redirect('/rey');                
+                }
+             }else{
+                    res.render('registration',{
+                        error: true,
+                        title: 'Title',
+                        name: 'Password incorrect'                                
+                    });
+             }
         });
     });
 }
