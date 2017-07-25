@@ -34,8 +34,6 @@ module.exports = function(app, db, dba){
         var email = {email:emailField};
         
         dba.getUsers(email,function(data){
-              
-            console.log('login ' + data.length);
             
             if(data.length==1){
                 if(data[0].email==emailField&&data[0].password==passwordField){
