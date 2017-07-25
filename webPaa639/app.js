@@ -41,7 +41,7 @@ appRoute(app, db);
 reorderRoute(app, db);
 dealsRoute(app, db);
 neworderRoute(app, db);
-loginRoute(app, db);
+loginRoute(app, db, dba);
 registrationRoute(app, db, dba);
 checkoutRoute(app, db);
 logoutRoute(app, db);
