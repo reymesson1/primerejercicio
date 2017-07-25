@@ -8,12 +8,29 @@ module.exports = function(app, db, dba){
                 
         var cookiesTable = db.getCookies();
         var emailField = cookiesTable[0];
+            
+        var order = {"user":emailField.email, $or : [ { "status" : "active" }, {"status":"cancelled"},{"status":"delivered"}]};//input
+        var orders;//output
+        var isAvailable;
+            
+        dba.getOrdersFind(order,function(data){
+                if(emailField){
+                    orders = data;
+                    isAvailable = data.length == 0 ? false : true;
+                    res.render('reorder',{
+                        title: 'Title',
+                        name: 'Name',
+                        orders: orders,
+                        isAvailable: isAvailable
+                    });
+                }
+        });
         
         if(emailField){
             
             //var orders = db.getOrdersFind({"user":emailField.email, $or : [ { "status" : "active" }, {"status":"cancelled"},{"status":"delivered"}]}).sort({id:1});            
-             var order = {"user":emailField.email, $or : [ { "status" : "active" }, {"status":"cancelled"},{"status":"delivered"}]};//input
-             var orders;//output
+            var order = {"user":emailField.email, $or : [ { "status" : "active" }, {"status":"cancelled"},{"status":"delivered"}]};//input
+            var orders;//output
             dba.getOrdersFind(order,function(data){
                     orders = data;
             });
@@ -25,10 +42,7 @@ module.exports = function(app, db, dba){
                       
                   isAvailable = data.length == 0 ? false : true;                      
             });
-                
-            console.log('Reorder ' + orders);
-            console.log('Reorder ' + isAvailable);
-                        
+                                    
             res.render('reorder',{
                 title: 'Title',
                 name: 'Name',
