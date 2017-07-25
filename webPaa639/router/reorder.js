@@ -14,12 +14,13 @@ module.exports = function(app, db, dba){
         var isAvailable;
             
         dba.getOrdersFind(order,function(data){
-                if(emailField){                    
+                if(emailField){               
+                    orders = data;
                     isAvailable = data.length == 0 ? false : true;
                     res.render('reorder',{
                         title: 'Title',
                         name: 'Name',
-                        orders: data,
+                        orders: orders,
                         isAvailable: isAvailable
                     });
                 }else{
