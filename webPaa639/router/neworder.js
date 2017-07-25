@@ -140,7 +140,7 @@ module.exports = function(app, db, dba){
                     
                         var statusCancelled = false;
                     
-                        dba.getOrdersFind(num, function(data){                            
+                        dba.getOrdersFind(num, function(data){
                             if(data.length>0){
                                res.render('checkout', {
                                     error: true,
@@ -154,24 +154,24 @@ module.exports = function(app, db, dba){
                             }
                         });
    
-                       }/*else{
+                       
                           
-                            calculated = pizza[0].total - (pizza[0].total * pizza[0].discount/100);
-                           
-                            pizza[0].total = Math.round(calculated);
-                           
-                           
-                            db.addOrder({"id":orderId,"date":dateOrder,"user":emailField.email,"pizza":pizza,"total":calculated,"status":"active","discount":0});
+                        calculated = pizza[0].total - (pizza[0].total * pizza[0].discount/100);
 
-                            res.render('checkout', {
+                        pizza[0].total = Math.round(calculated);
 
-                                title: "Title",
-                                name: "Name",
-                                pizza: pizza,                                
-                                grandTotal: totalPizza,
-                                discountApply: true
-                            });
-                       }*/
+
+                        db.addOrder({"id":orderId,"date":dateOrder,"user":emailField.email,"pizza":pizza,"total":calculated,"status":"active","discount":0});
+
+                        res.render('checkout', {
+
+                            title: "Title",
+                            name: "Name",
+                            pizza: pizza,                                
+                            grandTotal: totalPizza,
+                            discountApply: true
+                        });
+
                     
                 }
                 
