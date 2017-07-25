@@ -26,36 +26,21 @@ module.exports = function(app,db, dba){
                 
         var email = {email:emailField};
         
-        var isUsed = false;
+        
         
         dba.getUsers(email,function(data){
                         
-            if(data.length>0){
-                isUsed=true;                
-            }
-        });
-        
-                    
-        if(isUsed){
-            
-                
-                //db.addUser({email:emailField,password:pwdField});
-                //usersTable = db.getUsers();
+            if(data.length==0){
                 dba.addUser({email:emailField,password:pwdField});
-                
                 res.redirect('/rey');
-            
-        }else{
-
+            }else{
                 res.render('registration',{
 
                     error: true,
                     name: 'Users already exists'
-                });
-            
-        }
-            
-
-        
+                });            
+            }
+        });
+                    
     });
 }
