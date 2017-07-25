@@ -38,7 +38,7 @@ menuAJAX(app);
 appRoute(app, db);
 reorderRoute(app, db);
 dealsRoute(app, db);
-neworderRoute(app, db);
+neworderRoute(app, db, dba);
 loginRoute(app, db, dba);
 registrationRoute(app, db, dba);
 checkoutRoute(app, db);
