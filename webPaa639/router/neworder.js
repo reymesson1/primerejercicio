@@ -79,7 +79,7 @@ module.exports = function(app, db, dba){
                 var grandTotal = 10;
                 
                 db.addOrder({"id":orderId,"date":dateOrder,"user":emailField.email,"pizza":pizza,"total":pizzaObj.totalPizza,"status":"active", "discount":0});
-                dba.addOrder({"id":orderId,"date":dateOrder,"user":emailField.email,"pizza":pizza,"total":pizzaObj.totalPizza,"status":"active", "discount":0});
+                //dba.addOrder({"id":orderId,"date":dateOrder,"user":emailField.email,"pizza":pizza,"total":pizzaObj.totalPizza,"status":"active", "discount":0});
           
                 res.render('checkout', {
 
