@@ -25,6 +25,9 @@ module.exports = function(app, db, dba){
                       
                   isAvailable = data.length == 0 ? false : true;                      
             });
+                
+            console.log('Reorder ' + orders);
+            console.log('Reorder ' + isAvailable);
                         
             res.render('reorder',{
                 title: 'Title',
