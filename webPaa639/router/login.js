@@ -35,7 +35,7 @@ module.exports = function(app, db, dba){
         
         dba.getUsers(email,function(data){
             
-            console.log('login post ' + data.email + ' ' + data.password);
+            console.log('login post ' + data[0].email + ' ' + data[0].password);
             if(data.email==emailField&&data.password==passwordField){
                 db.addCookie({email:emailField});
                 res.redirect('/rey');                
