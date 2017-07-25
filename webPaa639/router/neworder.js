@@ -93,11 +93,33 @@ module.exports = function(app, db, dba){
                 
                 if(req.body.selected&&req.body.cancel){
                     
-                    var num = req.body.selected;
-                    
-                    var or = db.getOrders();
+                    var num = {"id":req.body.selected};
                     
                     var timeoutRule = false;
+                                        
+                    dba.getOrdersFind(num, function(data){
+                        
+                        console.log(data);
+                        var now  = moment().format('DD/MM/YYYY HH:mm:ss');
+                        var then = data.date;
+                        
+                        var ms = moment(now,"DD/MM/YYYY HH:mm:ss").diff(moment(then,"DD/MM/YYYY HH:mm:ss"));
+                        var d = moment.duration(ms);
+                        var s = Math.floor(d.asMinutes()) + moment.utc(ms).format(":mm:ss");
+
+                        if(Math.floor(d.asMinutes())>2){
+
+                            timeoutRule = true;                                    
+
+                        }else{
+                            
+                            dba.setOrders(num);
+                        }
+                    })
+                    
+                    /*var or = db.getOrders();
+                    
+                    
                     
                     for(var x=0;x<or.length;x++){
                         if(or[x].id==num){
@@ -116,7 +138,7 @@ module.exports = function(app, db, dba){
                                     or[x].status = "cancelled";                                
                                 }
                         }
-                    }
+                    }*/
                     
                     if(timeoutRule){
                            res.render('checkout', {
