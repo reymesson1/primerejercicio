@@ -150,9 +150,11 @@ module.exports = function(app, db, dba){
                             
                                 dba.getOrdersFind({"id":parseInt(req.body.selected)},function(data){
                                                                         
-                                    calculated = data.total - (data.total * data.discount/100);
+                                    var calculated = data.total - (data.total * data.discount/100);
                                     
-                                    totalCal = Math.round(calculated);                                     
+                                    totalCal = Math.round(calculated);                             
+                                    
+                                    var pizza = data.pizza;
                                     
                                     dba.addOrder({"id":orderId,"date":dateOrder,"user":emailField.email,"pizza":pizza,"total":totalCal,"status":"active","discount":0});
                                     
@@ -161,7 +163,7 @@ module.exports = function(app, db, dba){
                                         title: "Title",
                                         name: "Name",
                                         pizza: pizza,                                
-                                        grandTotal: calculated,
+                                        grandTotal: totalCal,
                                         discountApply: true
                                     });
                                     
