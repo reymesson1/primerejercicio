@@ -29,15 +29,15 @@ module.exports = function(app,db, dba){
         var isUsed = false;
         
         dba.getUsers(email,function(data){
-            
-            console.log(data.length);
+                        
             if(data.length>0){
-                isUsed=true;
-                console.log(isUsed);
+                isUsed=true;                
             }
         });
+        
+        console.log(isUsed);
             
-        if(isUsed){
+        /*if(isUsed){
             
                 res.render('registration',{
 
@@ -53,7 +53,7 @@ module.exports = function(app,db, dba){
             console.log('else');
 
             res.redirect('/rey');
-        }
+        }*/
             
 
         
