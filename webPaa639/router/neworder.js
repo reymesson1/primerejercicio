@@ -154,7 +154,7 @@ module.exports = function(app, db, dba){
                             }
                         });
    
-                       }else{
+                       }/*else{
                           
                             calculated = pizza[0].total - (pizza[0].total * pizza[0].discount/100);
                            
@@ -171,7 +171,7 @@ module.exports = function(app, db, dba){
                                 grandTotal: totalPizza,
                                 discountApply: true
                             });
-                       }
+                       }*/
                     
                 }
                 
