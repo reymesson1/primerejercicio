@@ -77,9 +77,10 @@ module.exports = function(){
         MongoClient.connect(url, function(err, db) {
           if (err) throw err;
           
-          var newValue = {"id":idOrder};
+          //var newValue = {"id":idOrder};
+          var newValue = {"id":25};
           //db.collection("orders").updateOne({"id":27},{"$set":{"status":"cancelled"}}, function(err, res) {                           
-          db.collection("orders").updateOne({"id":25},{"$set":{"status":"cancelled"}}, function(err, res) {              
+          db.collection("orders").updateOne(newValue,{"$set":{"status":"cancelled"}}, function(err, res) {              
             if (err) throw err;              
              
             callback(res);
