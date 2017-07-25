@@ -121,7 +121,7 @@ module.exports = function(app, db, dba){
                             changeValue = {"id":req.body.selected};
                             changeStatus = {"$set":{"status":"cancelled"} };
                             dba.setOrders(changeValue, changeStatus, function(data){
-                                console.log('neworder line117 ' + change + ' ' + data);
+                                console.log('neworder line117 ' +  data);
                             });
                         }
                     })
