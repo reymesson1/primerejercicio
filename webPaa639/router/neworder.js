@@ -152,7 +152,7 @@ module.exports = function(app, db, dba){
                                     console.log(data);                                
                                 });
                             }
-                        })
+                        });
    
                        }else{
                           
