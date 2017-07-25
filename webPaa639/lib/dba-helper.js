@@ -18,7 +18,7 @@ module.exports = function(){
   }
 
   
-  function getUsers(classback){
+  function getUsers(callback){
     
       var MongoClient = require('mongodb').MongoClient;
       var url = "mongodb://localhost:27017/rey";
