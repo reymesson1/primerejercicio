@@ -41,7 +41,7 @@ module.exports = function(app, db, dba){
                     res.redirect('/rey');                
                 }
              }else{
-                    res.render('registration',{
+                    res.render('login',{
                         error: true,
                         title: 'Title',
                         name: 'Password incorrect'                                
