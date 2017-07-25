@@ -90,7 +90,7 @@ module.exports = function(app, db, dba){
                     title: "Title",
                     name: "Name",
                     pizza: pizza,
-                    grandTotal: totalPizza,
+                    grandTotal: pizzaObj.totalPizza,
                     discountApply: false
                 });            
             }else if(req.body.selected){//pizza deals reorder 
