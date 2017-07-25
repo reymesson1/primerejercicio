@@ -141,7 +141,7 @@ module.exports = function(app, db, dba){
                         var statusCancelled = false;
                     
                         dba.getOrdersFind(num, function(data){
-                            console.log('line144' + data.length);
+                            console.log('line144 '+ num + ' ' + data.length);
                             if(data.length>0){
                                 statusCancelled = true;                                                               
                             }
