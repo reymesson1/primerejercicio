@@ -1,6 +1,6 @@
 var bodyParser = require('body-parser');
 
-module.exports = function(app, db){
+module.exports = function(app, db, dba){
     
     app.use(bodyParser());
     
@@ -30,13 +30,14 @@ module.exports = function(app, db){
                 
         var emailField =  req.body.userName;        
         var passwordField =  req.body.password;        
-        var usersTable = db.getUsers();
+        
+        
+        
+        
+        /*var usersTable = db.getUsers();
         var isUsed = false;
         var isPass = false;
-        
-        
-        
-        
+          
         for(var x=0;x<usersTable.length;x++){            
             
             if(usersTable[x].email==emailField){                
@@ -61,7 +62,7 @@ module.exports = function(app, db){
                     name: 'Password incorrect'                
                 });
             
-        }
+        }*/
         
     });
 }
