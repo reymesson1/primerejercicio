@@ -35,7 +35,7 @@ module.exports = function(app, db, dba){
         
         dba.getUsers(email,function(err,data){
             
-            console.log(data);
+            console.log('login post ' + data);
         })
         
         
