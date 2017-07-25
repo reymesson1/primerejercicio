@@ -24,9 +24,7 @@ module.exports = function(app,db, dba){
         var pwdField = req.body.password;
         var cPwdField = req.body.confirmPassword;
                 
-        var email = {email:emailField};
-        
-        
+        var email = {email:emailField};      
         
         dba.getUsers(email,function(data){
                         
