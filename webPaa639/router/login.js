@@ -39,7 +39,7 @@ module.exports = function(app, db, dba){
                 db.addCookie({email:emailField});
                 res.redirect('/rey');                
             }else{
-                res.render('login',{
+                res.render('registration',{
                     error: true,
                     title: 'Title',
                     name: 'Password incorrect'                                
