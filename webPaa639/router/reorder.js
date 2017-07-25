@@ -13,11 +13,13 @@ module.exports = function(app, db, dba){
             
             //var orders = db.getOrdersFind({"user":emailField.email, $or : [ { "status" : "active" }, {"status":"cancelled"},{"status":"delivered"}]}).sort({id:1});            
                         
+             var orders;
             dba.getOrders(function(data){
                     console.log('reorder ' + data);
+                    orders = data;
             });
             
-            /*var isAvailable = db.getOrdersFind({"user":emailField.email, $or : [ { "status" : "active" }, {"status":"cancelled"},{"status":"delivered"} ]   }).length == 0 ? false : true;
+            var isAvailable = db.getOrdersFind({"user":emailField.email, $or : [ { "status" : "active" }, {"status":"cancelled"},{"status":"delivered"} ]   }).length == 0 ? false : true;
                         
             res.render('reorder',{
 
@@ -25,7 +27,7 @@ module.exports = function(app, db, dba){
                 name: 'Name',
                 orders: orders,
                 isAvailable: isAvailable
-            });*/
+            });
         }else{
             res.redirect('login');
         }
