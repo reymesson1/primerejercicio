@@ -136,7 +136,7 @@ module.exports = function(app, db, dba){
                 
                 }else{
                             
-                        var num = {"id":req.body.selected};
+                        var num = {"id":req.body.selected,"status":"cancelled"};
                     
                         var statusCancelled = false;
                     
