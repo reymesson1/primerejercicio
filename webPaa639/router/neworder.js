@@ -149,8 +149,10 @@ module.exports = function(app, db, dba){
                             }else{
                             
                                 dba.getOrdersFind({"id":parseInt(req.body.selected)},function(data){
-                                    console.log(data);
+                                    
                                     var pizza = data.pizza;
+                                    
+                                    console.log(pizza.total);
                                     
                                     /*calculated = pizza[0].total - (pizza[0].total * pizza[0].discount/100);
                                     
