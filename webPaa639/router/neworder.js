@@ -152,7 +152,7 @@ module.exports = function(app, db, dba){
                                     
                                     var pizza = data.pizza;
                                     
-                                    console.log(pizza.total);
+                                    console.log(pizza[0].total);
                                     
                                     /*calculated = pizza[0].total - (pizza[0].total * pizza[0].discount/100);
                                     
