@@ -35,7 +35,7 @@ db.addOrder({"id":7,"date":"21/07/2017 11:27:04","user":"admin@gmail.com","pizza
 db.addOrder({"id":8,"date":"21/07/2017 11:27:04","user":"admin@gmail.com","pizza":pizza, "total":600,"status":"active","discount":0});
 
 menuAJAX(app);
-appRoute(app, db);
+appRoute(app, db, dba);
 reorderRoute(app, db, dba);
 dealsRoute(app, db, dba);
 neworderRoute(app, db, dba);
