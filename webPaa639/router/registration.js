@@ -27,13 +27,17 @@ module.exports = function(app,db, dba){
         
         var email = {email:emailField};
         
+        var isUsed = false;
+        
         dba.getUsers(email,function(data){
             
-            console.log(data.length);            
+            //console.log(data.length);
+            if(data.length>0){
+                isUsed=true;
+            }
         })
         
-        res.redirect('/rey');
-        
+                
         /*var usersTable = db.getUsers();
         var isUsed = false;
         
@@ -41,7 +45,7 @@ module.exports = function(app,db, dba){
             if(usersTable[x].email==emailField){
                 isUsed=true;
             }
-        }
+        }*/
             
         if(isUsed){
             
@@ -53,12 +57,13 @@ module.exports = function(app,db, dba){
             
         }else{
 
-            db.addUser({email:emailField,password:pwdField});
-            usersTable = db.getUsers();
+            //db.addUser({email:emailField,password:pwdField});
+            //usersTable = db.getUsers();
+            dba.addUser({email:emailField,password:pwdField});
             
 
             res.redirect('/rey');
-        }*/
+        }
             
 
         
