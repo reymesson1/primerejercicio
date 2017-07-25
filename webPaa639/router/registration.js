@@ -26,7 +26,7 @@ module.exports = function(app,db, dba){
         
         dba.getUsers(function(data){
             
-            console.log(data);        
+            console.log(data.length);        
         })
         
         res.redirect('/rey');
