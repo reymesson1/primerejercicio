@@ -96,6 +96,8 @@ module.exports = function(app, db, dba){
                     var num = {"id":req.body.selected};
                     
                     var timeoutRule = false;
+                    
+                    var change;
                                         
                     dba.getOrdersFind(num, function(data){
                         
@@ -112,8 +114,8 @@ module.exports = function(app, db, dba){
                             timeoutRule = true;                                    
 
                         }else{
-                            
-                            dba.setOrders(num);
+                            change = {"id":req.body.selected, {"$set":{"status":"cancelled"}} };
+                            dba.setOrders(change);
                         }
                     })
                     
