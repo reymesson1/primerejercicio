@@ -34,8 +34,7 @@ module.exports = function(app, db, dba){
         var email = {email:emailField};
         
         dba.getUsers(email,function(data){
-            
-            console.log('login post ' + data[0].email + ' ' + data[0].password);
+                        
             if(data[0].email==emailField&&data[0].password==passwordField){
                 db.addCookie({email:emailField});
                 res.redirect('/rey');                
@@ -46,38 +45,7 @@ module.exports = function(app, db, dba){
                     name: 'Password incorrect'                
                 });
             }
-        })
-        
-        
-        /*var usersTable = db.getUsers();
-        var isUsed = false;
-        var isPass = false;
-          
-        for(var x=0;x<usersTable.length;x++){            
-            
-            if(usersTable[x].email==emailField){                
-                isUsed=true;
-                if(usersTable[x].password==passwordField){
-                    isPass=true;                
-                }
-            }            
-        }
-        
-        if(isUsed&&isPass){
-            
-            db.addCookie({email:emailField});
-            res.redirect('/rey');
-        }else{
-        
-            
-                res.render('login',{
-
-                    error: true,
-                    title: 'Title',
-                    name: 'Password incorrect'                
-                });
-            
-        }*/
+        });
         
     });
 }
