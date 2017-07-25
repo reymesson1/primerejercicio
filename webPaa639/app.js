@@ -34,8 +34,6 @@ db.addOrder({"id":6,"date":"21/07/2017 11:27:04","user":"admin@gmail.com","pizza
 db.addOrder({"id":7,"date":"21/07/2017 11:27:04","user":"admin@gmail.com","pizza":pizza, "total":600,"status":"active","discount":0});
 db.addOrder({"id":8,"date":"21/07/2017 11:27:04","user":"admin@gmail.com","pizza":pizza, "total":600,"status":"active","discount":0});
 
-db.addUser({email:"reymesson@gmail.com",password:"1234"});
-
 menuAJAX(app);
 appRoute(app, db);
 reorderRoute(app, db);
