@@ -1,6 +1,6 @@
 var bodyParser = require('body-parser');
         
-module.exports = function(app, db){
+module.exports = function(app, db, dba){
     
     app.use(bodyParser());
     
