@@ -71,13 +71,17 @@ module.exports = function(){
    function setOrders(order){
        
        var MongoClient = require('mongodb').MongoClient;
-          var url = "mongodb://localhost:27017/rey";
-          MongoClient.connect(url, function(err, db) {
+        var url = "mongodb://127.0.0.1:27017/rey";
+
+        MongoClient.connect(url, function(err, db) {
+          if (err) throw err;
+          
+          db.collection("orders").updateOne(order, function(err, res) {
             if (err) throw err;
-              db.collection("orders").update(order);
-              db.close();
-              console.log('Updated');
+            console.log("1 record updated");
+            db.close();
           });
+        });
    }
    
    return {
