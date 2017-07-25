@@ -7,14 +7,16 @@ module.exports = function(app, db, dba){
     app.get('/reorder', function(req,res){
                 
         var cookiesTable = db.getCookies();
-        var emailField = cookiesTable[0];                    
+        var emailField = cookiesTable[0];      
             
-        dba.getOrdersFind(order,function(data){
-                
+        if(emailField){
+            
                 var order = {"user":emailField.email, $or : [ { "status" : "active" }, {"status":"cancelled"},{"status":"delivered"}]};//input
                 var orders;//output
                 var isAvailable;
-                if(emailField){
+            
+                dba.getOrdersFind(order,function(data){                
+                
                     orders = data;
                     isAvailable = data.length == 0 ? false : true;
                     res.render('reorder',{
@@ -23,9 +25,9 @@ module.exports = function(app, db, dba){
                         orders: orders,
                         isAvailable: isAvailable
                     });
-                }else{
-                        res.redirect('login');
-                }
-        });
+                });
+        }else{
+                res.redirect('login');
+        }
     });
 };
