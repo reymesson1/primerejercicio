@@ -82,7 +82,7 @@ module.exports = function(){
           //db.collection("orders").updateOne({"id":27},{"$set":{"status":"cancelled"}}, function(err, res) {                           
           db.collection("orders").updateOne(newValue,{"$set":{"status":"cancelled"}}, function(err, res) {              
             if (err) throw err;              
-             
+             console.log(newValue);
             callback(res);
             db.close();
           });
