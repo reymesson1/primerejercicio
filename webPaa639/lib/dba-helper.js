@@ -21,7 +21,8 @@ module.exports = function(){
               callback(result);   
           })        
         db.close();
-      });    }  
+      });    
+  }  
   return {
         getUsers: getUsers,
         addUser: addUser
