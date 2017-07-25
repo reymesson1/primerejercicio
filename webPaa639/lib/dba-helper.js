@@ -76,8 +76,9 @@ module.exports = function(){
         MongoClient.connect(url, function(err, db) {
           if (err) throw err;
           
-          db.collection("orders").updateOne(order, orderChange, function(err, res) {
-            if (err) throw err;
+          db.collection("orders").update(order, orderChange, function(err, res) {              
+            if (err) throw err;              
+             console.log(order + ' ' + orderChange)
             callback(res);
             db.close();
           });
