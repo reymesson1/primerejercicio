@@ -35,25 +35,25 @@ module.exports = function(app,db, dba){
             }
         });
         
-        console.log(isUsed);
+                    
+        if(isUsed){
             
-        /*if(isUsed){
+                
+                //db.addUser({email:emailField,password:pwdField});
+                //usersTable = db.getUsers();
+                dba.addUser({email:emailField,password:pwdField});
+                
+                res.redirect('/rey');
             
+        }else{
+
                 res.render('registration',{
 
                     error: true,
                     name: 'Users already exists'
                 });
             
-        }else{
-
-            //db.addUser({email:emailField,password:pwdField});
-            //usersTable = db.getUsers();
-            //dba.addUser({email:emailField,password:pwdField});
-            console.log('else');
-
-            res.redirect('/rey');
-        }*/
+        }
             
 
         
