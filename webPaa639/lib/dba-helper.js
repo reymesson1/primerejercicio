@@ -14,6 +14,7 @@ module.exports = function(){
           });
         });  
      }  
+    
     function getUsers(user,callback){    
           var MongoClient = require('mongodb').MongoClient;
           var url = "mongodb://localhost:27017/rey";
