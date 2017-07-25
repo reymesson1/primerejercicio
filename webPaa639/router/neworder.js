@@ -153,44 +153,10 @@ module.exports = function(app, db, dba){
                                 });
                             }
                         })
-
-                        /*var or = db.getOrders();
-
-                        var orders = db.getOrders();
-
-                        orderId++;
-
-                        var pizza;
-
-                        var grandTotal = 10;
-
-                        var totalPizza = 10;
-                    
-
-                        for(var x=0;x<or.length;x++){
-                            if(or[x].id==num){
-                                or[x].pizza[0].id = orderId;
-                                pizza = or[x].pizza;
-                                totalPizza=or[x].pizza[0].total
-                                if(or[x].status=='cancelled'){
-                                    statusCancelled=true;
-                                }
-                            }
-                        }*/
-
-                       if(statusCancelled){
-                           
-                           res.render('checkout', {
-                                error: true,
-                                name: 'This orders is already cancelled'  
-                           });
-                           
+   
                        }else{
-                           
-                           console.log('line 183 ');
-                           console.log(num);
-                           
-                            /*calculated = pizza[0].total - (pizza[0].total * pizza[0].discount/100);
+                          
+                            calculated = pizza[0].total - (pizza[0].total * pizza[0].discount/100);
                            
                             pizza[0].total = Math.round(calculated);
                            
@@ -204,7 +170,7 @@ module.exports = function(app, db, dba){
                                 pizza: pizza,                                
                                 grandTotal: totalPizza,
                                 discountApply: true
-                            });*/
+                            });
                        }
                     
                 }
