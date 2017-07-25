@@ -10,8 +10,7 @@ module.exports = function(app, db){
         var emailField = cookiesTable[0];
         
         if(emailField){
-            
-                        
+                                    
             //var orders = db.getOrdersFind({"user":emailField.email, "status":"active"});
             var orders = db.getOrdersFind({"user":emailField.email, $or : [ { "status" : "active" }, {"status":"cancelled"},{"status":"delivered"}]}).sort({id:1});
             //{ $or: [ {"name": "gary"}, {"name": "rob"}
