@@ -42,10 +42,9 @@ module.exports = function(app, db, dba){
                 res.render('login',{
                     error: true,
                     title: 'Title',
-                    name: 'Password incorrect'                
+                    name: 'Password incorrect'                                
                 });
             }
         });
-        
     });
 }
