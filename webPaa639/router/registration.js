@@ -1,6 +1,6 @@
 var bodyParser = require('body-parser');
 
-module.exports = function(app,db){
+module.exports = function(app,db, dba){
     app.use(bodyParser());
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({
@@ -24,7 +24,12 @@ module.exports = function(app,db){
         var pwdField = req.body.password;
         var cPwdField = req.body.confirmPassword;
         
-        var usersTable = db.getUsers();
+        dba.getUsers(function(data){
+            
+            console.log(data);        
+        })
+        
+        /*var usersTable = db.getUsers();
         var isUsed = false;
         
         for(var x=0;x<usersTable.length;x++){            
@@ -48,7 +53,7 @@ module.exports = function(app,db){
             
 
             res.redirect('/rey');
-        }
+        }*/
             
 
         
