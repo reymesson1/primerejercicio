@@ -17,6 +17,6 @@ module.exports = function(app, db, dba){
 			title: 'Title',
 			name: 'Name',
 			orders: orders
-		});
-	});*/
+		});*/
+	});
 }
