@@ -33,7 +33,7 @@ module.exports = function(){
         MongoClient.connect(url, function(err, db) {
           if (err) throw err;
           //var myobj = { email: "Company Inc", address: "Highway 37" };
-          db.collection("orders").insertOne(user, function(err, res) {
+          db.collection("orders").insertOne(order, function(err, res) {
             if (err) throw err;
             console.log("1 record inserted");
             db.close();
