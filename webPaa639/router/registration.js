@@ -29,6 +29,8 @@ module.exports = function(app,db, dba){
             console.log(data);        
         })
         
+        res.redirect('/rey');
+        
         /*var usersTable = db.getUsers();
         var isUsed = false;
         
