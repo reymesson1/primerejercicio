@@ -1,6 +1,6 @@
 module.exports = function(app, db, dba){
 
-	app.get('/deals', function(req,res){
+	app.get('/', function(req,res){
                 
 	var order = { $and: [ { status: "active" }, { discount: { $eq: 0 } } ] };
 		
