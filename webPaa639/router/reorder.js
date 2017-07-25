@@ -12,8 +12,13 @@ module.exports = function(app, db){
         if(emailField){
                                     
             //var orders = db.getOrdersFind({"user":emailField.email, "status":"active"});
-            var orders = db.getOrdersFind({"user":emailField.email, $or : [ { "status" : "active" }, {"status":"cancelled"},{"status":"delivered"}]}).sort({id:1});
-            //{ $or: [ {"name": "gary"}, {"name": "rob"}
+            //var orders = db.getOrdersFind({"user":emailField.email, $or : [ { "status" : "active" }, {"status":"cancelled"},{"status":"delivered"}]}).sort({id:1});            
+            
+            dba.getOrders(function(data){
+                    
+                    console.log('reorder ' + data);            
+            });
+              
             
             
             //var isAvailable = db.getOrdersFind({"user":emailField.email}).length == 0 ? false : true;
