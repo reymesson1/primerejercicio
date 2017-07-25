@@ -180,7 +180,8 @@ module.exports = function(app, db, dba){
                            
                        }else{
                            
-                           console.log('line 183 ' + num);
+                           console.log('line 183 ');
+                           console.log(num);
                            
                             /*calculated = pizza[0].total - (pizza[0].total * pizza[0].discount/100);
                            
