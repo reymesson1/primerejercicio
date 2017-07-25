@@ -34,6 +34,12 @@ module.exports = function(app,db, dba){
             console.log(data.length);
             if(data.length>0){
                 isUsed=true;
+                console.log(isUsed);
+                res.render('registration',{
+
+                    error: true,
+                    name: 'Users already exists'
+                });
             }
         })
         
