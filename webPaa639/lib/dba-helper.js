@@ -68,7 +68,7 @@ module.exports = function(){
           });      
    }
     
-   function setOrders(order){
+   function setOrders(order, callback){
        
        var MongoClient = require('mongodb').MongoClient;
         var url = "mongodb://127.0.0.1:27017/rey";
@@ -78,7 +78,7 @@ module.exports = function(){
           
           db.collection("orders").updateOne(order, function(err, res) {
             if (err) throw err;
-            console.log("1 record updated");
+            callback(res);
             db.close();
           });
         });
