@@ -7,14 +7,14 @@ module.exports = function(app, db, dba){
     app.get('/reorder', function(req,res){
                 
         var cookiesTable = db.getCookies();
-        var emailField = cookiesTable[0];
-            
-        var order = {"user":emailField.email, $or : [ { "status" : "active" }, {"status":"cancelled"},{"status":"delivered"}]};//input
-        var orders;//output
-        var isAvailable;
+        var emailField = cookiesTable[0];                    
             
         dba.getOrdersFind(order,function(data){
-                if(emailField){               
+                
+                var order = {"user":emailField.email, $or : [ { "status" : "active" }, {"status":"cancelled"},{"status":"delivered"}]};//input
+                var orders;//output
+                var isAvailable;
+                if(emailField){
                     orders = data;
                     isAvailable = data.length == 0 ? false : true;
                     res.render('reorder',{
@@ -26,7 +26,6 @@ module.exports = function(app, db, dba){
                 }else{
                         res.redirect('login');
                 }
-        });       
-        
-    });  
+        });
+    });
 };
