@@ -143,7 +143,10 @@ module.exports = function(app, db, dba){
                         dba.getOrdersFind(num, function(data){
                             console.log('line144 '+ num + ' ' + data.length);
                             if(data.length>0){
-                                statusCancelled = true;                                                               
+                               res.render('checkout', {
+                                    error: true,
+                                    name: 'This orders is already cancelled'  
+                               });
                             }
                         })
 
