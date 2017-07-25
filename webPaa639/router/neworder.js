@@ -100,9 +100,7 @@ module.exports = function(app, db, dba){
                     var num = {"id":req.body.selected};
                     
                     var timeoutRule = false;
-                    
-                    var change;
-                                        
+                                                                                
                     dba.getOrdersFind(num, function(data){
                         
                         console.log(data);
@@ -126,29 +124,6 @@ module.exports = function(app, db, dba){
                         }
                     })
                     
-                    /*var or = db.getOrders();
-                    
-                    
-                    
-                    for(var x=0;x<or.length;x++){
-                        if(or[x].id==num){
-                                var now  = moment().format('DD/MM/YYYY HH:mm:ss');
-                                var then = or[x].date;
-
-                                var ms = moment(now,"DD/MM/YYYY HH:mm:ss").diff(moment(then,"DD/MM/YYYY HH:mm:ss"));
-                                var d = moment.duration(ms);
-                                var s = Math.floor(d.asMinutes()) + moment.utc(ms).format(":mm:ss");
-                            
-                                if(Math.floor(d.asMinutes())>2){
-                                    
-                                    timeoutRule = true;                                    
-                                    
-                                }else{
-                                    or[x].status = "cancelled";                                
-                                }
-                        }
-                    }*/
-                    
                     if(timeoutRule){
                            res.render('checkout', {
                                 error: true,
@@ -160,11 +135,18 @@ module.exports = function(app, db, dba){
                     
                 
                 }else{
-            
-                
-                        var num = req.body.selected;
+                            
+                        var num = {"id":req.body.selected};
+                    
+                        var statusCancelled = false;
+                    
+                        dba.getOrdersFind(num, function(data){
+                            if(data.length>0){
+                                statusCancelled = true;                                                               
+                            }
+                        })
 
-                        var or = db.getOrders();
+                        /*var or = db.getOrders();
 
                         var orders = db.getOrders();
 
@@ -176,7 +158,6 @@ module.exports = function(app, db, dba){
 
                         var totalPizza = 10;
                     
-                        var statusCancelled = false;
 
                         for(var x=0;x<or.length;x++){
                             if(or[x].id==num){
@@ -187,7 +168,7 @@ module.exports = function(app, db, dba){
                                     statusCancelled=true;
                                 }
                             }
-                        }
+                        }*/
 
                        if(statusCancelled){
                            
@@ -198,7 +179,9 @@ module.exports = function(app, db, dba){
                            
                        }else{
                            
-                            calculated = pizza[0].total - (pizza[0].total * pizza[0].discount/100);
+                           console.log('line 183 ' + num);
+                           
+                            /*calculated = pizza[0].total - (pizza[0].total * pizza[0].discount/100);
                            
                             pizza[0].total = Math.round(calculated);
                            
@@ -212,7 +195,7 @@ module.exports = function(app, db, dba){
                                 pizza: pizza,                                
                                 grandTotal: totalPizza,
                                 discountApply: true
-                            }); 
+                            });*/
                        }
                     
                 }
