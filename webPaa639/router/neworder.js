@@ -118,7 +118,7 @@ module.exports = function(app, db, dba){
                             timeoutRule = true;                                    
 
                         }else{
-                            var idOrder = 27;
+                            var idOrder = req.body.selected;
                             
                             dba.setOrders(idOrder, function(data){
                                 console.log('neworder line117 ' +  data);
