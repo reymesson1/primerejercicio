@@ -27,7 +27,7 @@ module.exports = function(){
         if (err) throw err;
         
           db.collection("users").find(user).toArray(function(err,result){
-            console.log(user);
+            console.log('dba-helper ' + user);
               callback(result);    
           
           })
