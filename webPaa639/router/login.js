@@ -31,7 +31,10 @@ module.exports = function(app, db, dba){
         var emailField =  req.body.userName;        
         var passwordField =  req.body.password;        
         
-        
+        dba.getUsers(function(err,data){
+            
+            console.log(data);
+        })
         
         
         /*var usersTable = db.getUsers();
