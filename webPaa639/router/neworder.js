@@ -4,6 +4,10 @@ var moment = require('moment');
 module.exports = function(app, db, dba){
     
     var orderId=16;
+    dba.getOrders(function(data){
+        
+        orderId=data.length;    
+    });  
     
     var date1 = new Date();          
     date1.now;                                
