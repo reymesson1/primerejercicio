@@ -77,7 +77,8 @@ module.exports = function(){
         MongoClient.connect(url, function(err, db) {
           if (err) throw err;
           
-          //db.collection("orders").update(order, orderChange, function(err, res) {              
+          var newValue = {"id":idOrder};
+          //db.collection("orders").updateOne({"id":27},{"$set":{"status":"cancelled"}}, function(err, res) {                           
           db.collection("orders").updateOne({"id":27},{"$set":{"status":"cancelled"}}, function(err, res) {              
             if (err) throw err;              
              
