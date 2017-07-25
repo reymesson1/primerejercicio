@@ -85,6 +85,7 @@ module.exports = function(){
         addUser: addUser,
         getOrders: getOrders,
         addOrder: addOrder,
-        getOrdersFind: getOrdersFind
+        getOrdersFind: getOrdersFind,
+        setOrders: setOrders
    }  
 }
