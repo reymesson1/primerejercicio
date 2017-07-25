@@ -103,7 +103,7 @@ module.exports = function(app, db, dba){
                                                                                 
                     dba.getOrdersFind(num, function(data){
                         
-                        console.log(data);
+                        
                         var now  = moment().format('DD/MM/YYYY HH:mm:ss');
                         var then = data.date;
                         
@@ -149,10 +149,21 @@ module.exports = function(app, db, dba){
                             }else{
                             
                                 dba.getOrdersFind({"id":parseInt(req.body.selected)},function(data){
+                                                                        
+                                    calculated = data.total - (data.total * data.discount/100);
                                     
-                                    var pizza = data.pizza;
+                                    totalCal = Math.round(calculated);                                     
                                     
-                                    console.log(pizza[0].total);
+                                    dba.addOrder({"id":orderId,"date":dateOrder,"user":emailField.email,"pizza":pizza,"total":totalCal,"status":"active","discount":0});
+                                    
+                                    res.render('checkout', {
+
+                                        title: "Title",
+                                        name: "Name",
+                                        pizza: pizza,                                
+                                        grandTotal: calculated,
+                                        discountApply: true
+                                    });
                                     
                                     /*calculated = pizza[0].total - (pizza[0].total * pizza[0].discount/100);
                                     
