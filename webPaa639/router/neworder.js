@@ -1,7 +1,7 @@
 var bodyParser = require('body-parser');
 var moment = require('moment');
 
-module.exports = function(app, db){
+module.exports = function(app, db, dba){
     
     var orderId=16;
     
@@ -71,21 +71,16 @@ module.exports = function(app, db){
                 if(pizzaObj.extra){                    
                     pizzaObj.totalPizza+=300;
                 }
-                                
-                                
+                              
                 orderId++;
-                
 
-                
-                
                 var pizza = [{"id":orderId,"user":emailField.email,"items":[{ "id":"1","name":pizzaObj.crusts,"price":200 },{ "id":"2","name":pizzaObj.cheese,"price":200 },{ "id":"3","name":pizzaObj.sauce,"price":100 },{ "id":"4","name":pizzaObj.toppings,"price":200 },{ "id":"5","name":pizzaObj.toppings2,"price":200 },{"id":"6","name":pizzaObj.size,"price":100},{"id":7,"name":pizzaObj.extra,"extra":300}],"date":dateOrder,"status":"active","total":pizzaObj.totalPizza, "discount":0}];                
                 
                 var grandTotal = 10;
                 
                 db.addOrder({"id":orderId,"date":dateOrder,"user":emailField.email,"pizza":pizza,"total":pizzaObj.totalPizza,"status":"active", "discount":0});
-
-                
-
+                dba.addOrder({"id":orderId,"date":dateOrder,"user":emailField.email,"pizza":pizza,"total":pizzaObj.totalPizza,"status":"active", "discount":0});
+          
                 res.render('checkout', {
 
                     title: "Title",
@@ -193,7 +188,6 @@ module.exports = function(app, db){
                 
             }else{
 
-                console.log('from neworder else');
                 res.render('neworder', {
 
                     error: true,
