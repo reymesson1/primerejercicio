@@ -156,7 +156,7 @@ module.exports = function(app, db, dba){
    
                        
                           
-                        calculated = pizza[0].total - (pizza[0].total * pizza[0].discount/100);
+                        /*calculated = pizza[0].total - (pizza[0].total * pizza[0].discount/100);
 
                         pizza[0].total = Math.round(calculated);
 
@@ -170,7 +170,7 @@ module.exports = function(app, db, dba){
                             pizza: pizza,                                
                             grandTotal: totalPizza,
                             discountApply: true
-                        });
+                        });*/
 
                     
                 }
