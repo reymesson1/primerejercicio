@@ -33,7 +33,7 @@ module.exports = function(app, db, dba){
         
         var email = {email:emailField};
         
-        dba.getUsers(email,function(err,data){
+        dba.getUsers(email,function(data){
             
             console.log('login post ' + data);
         })
