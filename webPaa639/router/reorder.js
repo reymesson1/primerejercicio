@@ -10,21 +10,17 @@ module.exports = function(app, db, dba){
         var emailField = cookiesTable[0];
         
         if(emailField){
-                                    
-            //var orders = db.getOrdersFind({"user":emailField.email, "status":"active"});
+            
             //var orders = db.getOrdersFind({"user":emailField.email, $or : [ { "status" : "active" }, {"status":"cancelled"},{"status":"delivered"}]}).sort({id:1});            
             
-             var orders;
+            var orders;
             dba.getOrders(function(data){
                     
                     console.log('reorder ' + data);            
                     orders = data;
             });
-              
             
-            
-            //var isAvailable = db.getOrdersFind({"user":emailField.email}).length == 0 ? false : true;
-            var isAvailable = db.getOrdersFind({"user":emailField.email, $or : [ { "status" : "active" }, {"status":"cancelled"},{"status":"delivered"} ]   }).length == 0 ? false : true;
+            /*var isAvailable = db.getOrdersFind({"user":emailField.email, $or : [ { "status" : "active" }, {"status":"cancelled"},{"status":"delivered"} ]   }).length == 0 ? false : true;
                         
             res.render('reorder',{
 
@@ -32,10 +28,9 @@ module.exports = function(app, db, dba){
                 name: 'Name',
                 orders: orders,
                 isAvailable: isAvailable
-            });
+            });*/
         }else{
             res.redirect('login');
         }
-    });
-    
+    });  
 };
