@@ -23,8 +23,7 @@ module.exports = function(app,db, dba){
         var emailField = req.body.email;
         var pwdField = req.body.password;
         var cPwdField = req.body.confirmPassword;
-        
-        
+                
         var email = {email:emailField};
         
         var isUsed = false;
@@ -35,23 +34,8 @@ module.exports = function(app,db, dba){
             if(data.length>0){
                 isUsed=true;
                 console.log(isUsed);
-                res.render('registration',{
-
-                    error: true,
-                    name: 'Users already exists'
-                });
             }
-        })
-        
-                
-        /*var usersTable = db.getUsers();
-        var isUsed = false;
-        
-        for(var x=0;x<usersTable.length;x++){            
-            if(usersTable[x].email==emailField){
-                isUsed=true;
-            }
-        }*/
+        });
             
         if(isUsed){
             
@@ -65,8 +49,8 @@ module.exports = function(app,db, dba){
 
             //db.addUser({email:emailField,password:pwdField});
             //usersTable = db.getUsers();
-            dba.addUser({email:emailField,password:pwdField});
-            
+            //dba.addUser({email:emailField,password:pwdField});
+            console.log('else');
 
             res.redirect('/rey');
         }
