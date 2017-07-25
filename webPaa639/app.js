@@ -18,6 +18,7 @@ var microservice = require('./lib/microservice');
 var menuAJAX = require('./lib/ajaxMenu.js');
 
 var db = require('./lib/db-helper')();
+var dba = require('./lib/dba-helper')();
 
 
 var pizza = [{"id":1,"user":"reymesson@gmail.com","items":[{ "id":"1","name":"Tradicional","price":200 },{ "id":"2","name":"Mozarella","price":200 },{ "id":"3","name":"BBQ","price":100 },{ "id":"4","name":"Maiz","price":200 }],"date":"21/07/2017 11:27:05","status":"active",discount:0,"total":600}];
@@ -41,7 +42,7 @@ reorderRoute(app, db);
 dealsRoute(app, db);
 neworderRoute(app, db);
 loginRoute(app, db);
-registrationRoute(app, db);
+registrationRoute(app, db, dba);
 checkoutRoute(app, db);
 logoutRoute(app, db);
 esteroideHelpers(app, db);
