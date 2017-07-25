@@ -23,10 +23,12 @@ module.exports = function(app, db, dba){
                         orders: orders,
                         isAvailable: isAvailable
                     });
+                }else{
+                        res.redirect('login');
                 }
         });
         
-        if(emailField){
+        /*if(emailField){
             
             //var orders = db.getOrdersFind({"user":emailField.email, $or : [ { "status" : "active" }, {"status":"cancelled"},{"status":"delivered"}]}).sort({id:1});            
             var order = {"user":emailField.email, $or : [ { "status" : "active" }, {"status":"cancelled"},{"status":"delivered"}]};//input
@@ -51,6 +53,6 @@ module.exports = function(app, db, dba){
             });
         }else{
             res.redirect('login');
-        }
+        }*/
     });  
 };
