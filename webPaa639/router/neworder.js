@@ -118,9 +118,9 @@ module.exports = function(app, db, dba){
                             timeoutRule = true;                                    
 
                         }else{
-                            changeValue = {"id":req.body.selected};
-                            changeStatus = {"$set":{"status":"cancelled"} };
-                            dba.setOrders(changeValue, changeStatus, function(data){
+                            var idOrder = req.body.selected;
+                            
+                            dba.setOrders(idOrder, function(data){
                                 console.log('neworder line117 ' +  data);
                             });
                         }
