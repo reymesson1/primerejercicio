@@ -149,13 +149,28 @@ module.exports = function(app, db, dba){
                             }else{
                             
                                 dba.getOrdersFind({"id":parseInt(req.body.selected)},function(data){
-                                    console.log(data);                                
+                                    console.log(data);
+                                    var pizza = data.pizza;
+                                    
+                                    calculated = pizza[0].total - (pizza[0].total * pizza[0].discount/100);
+                                    
+                                    pizza[0].total = Math.round(calculated);
+                                    
+                                    dba.addOrder({"id":orderId,"date":dateOrder,"user":emailField.email,"pizza":pizza,"total":calculated,"status":"active","discount":0});
+                                    
+                                    res.render('checkout', {
+
+                                        title: "Title",
+                                        name: "Name",
+                                        pizza: pizza,                                
+                                        grandTotal: calculated,
+                                        discountApply: true
+                                    });
+                                    
                                 });
                             }
                         });
-   
-                       
-                          
+                                                
                         /*calculated = pizza[0].total - (pizza[0].total * pizza[0].discount/100);
 
                         pizza[0].total = Math.round(calculated);
