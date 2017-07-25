@@ -54,12 +54,26 @@ module.exports = function(){
           });      
    }
     
+   function getOrdersFind(order){
+       
+       var MongoClient = require('mongodb').MongoClient;
+          var url = "mongodb://localhost:27017/rey";
+          MongoClient.connect(url, function(err, db) {
+            if (err) throw err;        
+              db.collection("orders").find(order).toArray(function(err,result){            
+                  callback(result);   
+              })        
+            db.close();
+          });      
+   }
+    
     
    
   return {
         getUsers: getUsers,
         addUser: addUser,
         getOrders: getOrders,
-        addOrder: addOrder
+        addOrder: addOrder,
+        getOrdersFind: getOrdersFind
   }  
 }
