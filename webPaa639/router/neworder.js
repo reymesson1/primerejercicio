@@ -115,6 +115,7 @@ module.exports = function(app, db, dba){
 
                         }else{
                             change = {"id":req.body.selected}, {"$set":{"status":"cancelled"} };
+                            console.log('neworder line117 ' + change);
                             dba.setOrders(change);
                         }
                     })
